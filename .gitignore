@@ -12,3 +12,10 @@
 
 #Project libs
 /sonarqube-lib/
+
+# VSCode
+.vscode/
+bin/
+.settings/
+.project
+.classpath
