@@ -67,7 +67,7 @@ public class GetBindingAction extends AlmSettingsWsAction {
         try (DbSession dbSession = dbClient.openSession(false)) {
             ProjectDto project = componentFinder.getProjectByKey(dbSession, projectKey);
             userSession.checkProjectPermission(ADMIN, project);
-            ProjectAlmSettingDto projectAlmSetting = dbClient.projectAlmSettingDao().selectByProject(dbSession, project)
+            ProjectAlmSettingDto projectAlmSetting = dbClient.projectAlmSettingDao().selectByProject(dbSession, project.uuid())
                     .orElseThrow(() -> new NotFoundException(
                             format("Project '%s' is not bound to any ALM", project.getKey())));
             AlmSettingDto almSetting =
